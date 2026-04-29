@@ -11,8 +11,8 @@
 
 const Collider = ({ type = 'BOX', width = 1, height = 1, depth = 1 }) => ({
   type: 'BOX',
-  size: { x: width, y: height, z: depth },
-  halfSize: { x: width / 2, y: height / 2, z: depth / 2 },
+  width,
+  height,
   isTriggered: false,
 });
 export default Collider;

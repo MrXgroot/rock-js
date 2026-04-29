@@ -15,7 +15,8 @@ class RenderSystem {
     for (let id of ids) {
       const { x, y } = world.getComponent(id, 'Transform');
       const { color } = world.getComponent(id, 'Appearance');
-      this.graphics.drawRect({ x, y, w: 20, h: 20, color });
+      const { width, height } = world.getComponent(id, 'Collider');
+      this.graphics.drawRect({ x, y, width, height, color });
     }
   }
 }

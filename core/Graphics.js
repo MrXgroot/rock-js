@@ -7,9 +7,10 @@ class Graphics {
     }
     this.canvas = canvasElement;
     this.ctx = this.canvas.getContext('2d');
-
-    this.width = this.canvas.width;
-    this.height = this.canvas.height;
+    this.dpr = window.devicePixelRatio;
+    const rect = this.canvas.getBoundingClientRect();
+    this.canvas.width = rect.width * this.dpr;
+    this.canvas.height = rect.height * this.dpr;
   }
 
   /**
@@ -21,10 +22,10 @@ class Graphics {
    * @param {string} [options.color] -The CSS color string (Hex,RGB,or Name).
    */
 
-  drawRect({ x, y, w, h, color }) {
+  drawRect({ x, y, width, height, color }) {
     this.ctx.save();
     this.ctx.fillStyle = color;
-    this.ctx.fillRect(x - w / 2, y - h / 2, w, h);
+    this.ctx.fillRect(x - width / 2, y - height / 2, width, height);
     this.ctx.restore();
   }
 
